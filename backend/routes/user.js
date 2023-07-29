@@ -1,12 +1,28 @@
 const router = require('express').Router();
+const User =require('../models/user');
+const userService = require('../services/userService');
 
-router.get('/', (req, res) => {
-  res.send('Hi from user')
+
+
+
+router.get('/:adress', async (req, res) => {
+  const { adress } = req.params
+
+  const users = await userService.getCustomersByAdress(adress)
+  res.send(users)
+})
+
+router.get('/', async (req, res) => {
+  const users =  await userService.getCustomers()
+  res.send(users)
 });
 
 router.post('/', (req, res) => {
-  const { name }  = req.body;
-  res.send(`Hi ${name} from user`)
+  const obj = req.body
+
+  const user = new User(obj)
+  userService.create(user)
+  res.send(user)
 });
 
 module.exports = router;
