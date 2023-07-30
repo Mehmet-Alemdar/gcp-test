@@ -14,6 +14,10 @@ class BaseService {
   async findBy(property, value) {
     return await this.model.find({ [property]: value })
   }
+
+  async deleteBy(property, value) {
+    return await this.model.deleteOne({ [property]: value })
+  }
 }
 
 module.exports = BaseService

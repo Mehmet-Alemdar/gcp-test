@@ -13,6 +13,10 @@ class CustomerService extends BaseService {
   async getUsersByAdress(adress) {
     return await this.findBy('adress', adress)
   }
+
+  async deleteUserById(id) {
+    return await this.deleteBy('_id', id)
+  }
 }
 
 module.exports = new CustomerService(UserModel)

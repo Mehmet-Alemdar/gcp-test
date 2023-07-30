@@ -25,4 +25,11 @@ router.post('/', (req, res) => {
   res.send(user)
 });
 
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params
+
+  const user = await userService.deleteUserById(id)
+  res.send(user)
+})
+
 module.exports = router;
