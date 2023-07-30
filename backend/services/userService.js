@@ -2,15 +2,15 @@ const BaseService = require('./baseService')
 const UserModel = require('../models/user')
 
 class CustomerService extends BaseService {
-  createCustomer(data) {
+  createUser(data) {
     return this.save(data)
   }
 
-  async getCustomers() {
+  async getUsers() {
     return await this.getAll()
   }
 
-  async getCustomersByAdress(adress) {
+  async getUsersByAdress(adress) {
     return await this.findBy('adress', adress)
   }
 }

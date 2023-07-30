@@ -8,12 +8,12 @@ const userService = require('../services/userService');
 router.get('/:adress', async (req, res) => {
   const { adress } = req.params
 
-  const users = await userService.getCustomersByAdress(adress)
+  const users = await userService.getUsersByAdress(adress)
   res.send(users)
 })
 
 router.get('/', async (req, res) => {
-  const users =  await userService.getCustomers()
+  const users =  await userService.getUsers()
   res.send(users)
 });
 
