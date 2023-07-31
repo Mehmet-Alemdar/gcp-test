@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/forgg', {
+const connectionString = process.env.MONGODB_CONNECTION_STRING || 'mongodb://mongodb/forgg'
+
+mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

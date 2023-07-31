@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  frontend:
+    build: frontend
+    ports: 
+      - 3000:3000
+  backend:
+    build: backend
+    environment:
+      - MONGODB_CONNECTION_STRING:"mongodb://mongodb/forgg"
+    ports:
+      - 5000:5000
+  mongodb:
+    image: mongo:4.2.8
