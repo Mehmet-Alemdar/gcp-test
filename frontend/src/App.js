@@ -5,12 +5,13 @@ import UserCard from './components/userCard'
 import AddButton from './components/addButton';
 import Modal from './components/modal';
 
+const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/user"
 function App() {
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   
   useEffect(() => {
-    axios.get(process.env.REACT_APP_API_URL)
+    axios.get(`${baseUrl}/user`)
       .then(res => {
         setUsers(res.data)
       })
@@ -20,7 +21,7 @@ function App() {
   }, [])
 
   const handleSubmit = (user) => {
-    axios.post(process.env.REACT_APP_API_URL, user)
+    axios.post(`${baseUrl}/user`, user)
       .then(res => {
         console.log(res.data)
         setUsers([...users, user])
